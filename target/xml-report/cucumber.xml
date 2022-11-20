@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="22.643">
+    <testcase classname="US013 kullanici test results islemleri yapabilmeli" name="TC001 kullanici test sonuc bilgilerini gorebilmeli" time="22.147">
+        <system-out>
+            <![CDATA[Given kullanici "medunna" sayfasina gider...................................passed
+When kullanici Sign in butonuna tiklar......................................passed
+And Username ve Password girer..............................................passed
+And kullanici doktor hesabi ile giris yapar.................................passed
+Then kullanici randevulu hastalari goruntuler...............................passed
+And kullanici hasta düzenleye tiklar........................................passed
+And kullanici 3 saniye bekler...............................................passed
+And kullanici test sonuclarini goruntuler...................................passed
+And kullanici test sonucunu gorur...........................................passed
+]]>
+        </system-out>
+    </testcase>
+</testsuite>
