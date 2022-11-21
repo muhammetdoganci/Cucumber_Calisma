@@ -56,4 +56,10 @@ public class US013_StepDefinition {
         }
 
     }
+
+    @And("kullanici hastaya yatis talep eder")
+    public void kullaniciHastayaYatisTalepEder() {
+        us013_page.requestInpatient.click();
+
+    }
 }

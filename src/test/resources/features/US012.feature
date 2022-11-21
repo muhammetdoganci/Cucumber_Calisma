@@ -21,6 +21,7 @@ Feature: US012 Doktor hastalardan test isteyebilmeli
     And kullanici 2 saniye bekler
     And kullanici request a test botununa tiklar
     And kullanici 5 saniye bekler
-    And kullanici testin icerigini dogrular
+    And kullanici testleri goruntuler
     And kullanici sayfayi kapatir
+
 

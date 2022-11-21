@@ -37,6 +37,10 @@ public class US012_Page {
     @FindBy(xpath = "//*[@class='btn btn-success btn-sm']")
     public WebElement requestATest;
 
-    @FindBy(xpath = "//*[@name='1402']")
-    public WebElement ureInput;
+    @FindBy(xpath = "//tbody/tr")
+    public WebElement testItems;
+
+
+
+
 }

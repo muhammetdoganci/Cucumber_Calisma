@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -57,11 +58,6 @@ public class US012_StepDefinition {
         us012_page.requestATest.click();
     }
 
-    @And("kullanici sayfayi kapatir")
-    public void kullaniciSayfayiKapatir() {
-        Driver.closeDriver();
-    }
-
     @And("kullanici {int} saniye bekler")
     public void kullaniciSaniyeBekler(int istenenSure) {
         try {
@@ -69,27 +65,9 @@ public class US012_StepDefinition {
         }catch (InterruptedException e){
             throw new RuntimeException(e);
         }
+
+
     }
-
-    @And("kullanici testin icerigini dogrular")
-    public void kullaniciTestinIceriginiDogrular() {
-
-        WebElement urea = Driver.getDriver().findElement(By.xpath("//*[text()='Urea']"));
-        urea.isDisplayed();
-        WebElement albumin = Driver.getDriver().findElement(By.xpath("//*[text()='Albumin']"));
-        albumin.isDisplayed();
-        WebElement creatinine = Driver.getDriver().findElement(By.xpath("//*[text()='Creatinine']"));
-        creatinine.isDisplayed();
-        WebElement sodium = Driver.getDriver().findElement(By.xpath("(//*[text()='Sodium'])[2]"));
-        sodium.isDisplayed();
-        WebElement potassium = Driver.getDriver().findElement(By.xpath("(//*[text()='Potassium'])[2]"));
-        potassium.isDisplayed();
-        WebElement totalProtein = Driver.getDriver().findElement(By.xpath("(//*[text()='Total protein'])[1]"));
-        totalProtein.isDisplayed();
-        WebElement hemoglobin = Driver.getDriver().findElement(By.xpath("(//*[text()='Hemoglobin'])[1]"));
-        hemoglobin.isDisplayed();
-        WebElement glucose = Driver.getDriver().findElement(By.xpath("(//*[text()='Glucose'])[1]"));
-        glucose.isDisplayed();
 
 
         /*
@@ -100,6 +78,16 @@ public class US012_StepDefinition {
         }
          */
 
+
+
+    @And("kullanici sayfayi kapatir")
+    public void kullaniciSayfayiKapatir() {
+        Driver.closeDriver();
+    }
+
+    @And("kullanici testleri goruntuler")
+    public void kullaniciTestleriGoruntuler() {
+        us012_page.testItems.isDisplayed();
 
     }
 }

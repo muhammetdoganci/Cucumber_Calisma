@@ -1,17 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="22.643">
-    <testcase classname="US013 kullanici test results islemleri yapabilmeli" name="TC001 kullanici test sonuc bilgilerini gorebilmeli" time="22.147">
-        <system-out>
+<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="14.772">
+    <testcase classname="US014 kullanici yatan hasta islemleri yapabilmeli" name="TC001 Doktor yatili hasta işlemleri yapabilmeli" time="14.11">
+        <failure message="invalid selector: Unable to locate an element with the xpath expression (//div/label because of the following error:&#10;SyntaxError: Failed to execute 'evaluate' on 'Document': The string '(//div/label' is not a valid XPath expression.&#10;  (Session info: chrome=107.0.5304.107)&#10;For documentation on this error, please visit: https://selenium.dev/exceptions/#invalid_selector_exception&#10;Build info: version: '4.6.0', revision: '79f1c02ae20'&#10;System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.15'&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Command: [7d043b54b9b4181392dbad537e30b49c, findElement {using=xpath, value=(//div/label}]&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.107, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\w10\AppData\Local\...}, goog:chromeOptions: {debuggerAddress: localhost:60887}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:60887/devtoo..., se:cdpVersion: 107.0.5304.107, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}&#10;Session ID: 7d043b54b9b4181392dbad537e30b49c" type="org.openqa.selenium.InvalidSelectorException">
             <![CDATA[Given kullanici "medunna" sayfasina gider...................................passed
 When kullanici Sign in butonuna tiklar......................................passed
 And Username ve Password girer..............................................passed
 And kullanici doktor hesabi ile giris yapar.................................passed
-Then kullanici randevulu hastalari goruntuler...............................passed
-And kullanici hasta düzenleye tiklar........................................passed
-And kullanici 3 saniye bekler...............................................passed
-And kullanici test sonuclarini goruntuler...................................passed
-And kullanici test sonucunu gorur...........................................passed
+Then kullanici yatan hasalari tiklar........................................passed
+And kullanici yatan hasta duzenleye tiklar..................................passed
+And kullanici hasta olustur ve duzenle bilgilerini goruntuler...............failed
+And kullanici sayfayi kapatir...............................................skipped
+
+StackTrace:
+org.openqa.selenium.InvalidSelectorException: invalid selector: Unable to locate an element with the xpath expression (//div/label because of the following error:
+SyntaxError: Failed to execute 'evaluate' on 'Document': The string '(//div/label' is not a valid XPath expression.
+  (Session info: chrome=107.0.5304.107)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#invalid_selector_exception
+Build info: version: '4.6.0', revision: '79f1c02ae20'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.15'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [7d043b54b9b4181392dbad537e30b49c, findElement {using=xpath, value=(//div/label}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.107, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\w10\AppData\Local\...}, goog:chromeOptions: {debuggerAddress: localhost:60887}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:60887/devtoo..., se:cdpVersion: 107.0.5304.107, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 7d043b54b9b4181392dbad537e30b49c
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:541)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:365)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:357)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:70)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:39)
+	at com.sun.proxy.$Proxy21.isDisplayed(Unknown Source)
+	at stepDefinitions.US014_StepDefinition.kullaniciHastaOlusturVeDuzenleBilgileriniGoruntuler(US014_StepDefinition.java:22)
+	at ✽.kullanici hasta olustur ve duzenle bilgilerini goruntuler(file:///C:/Users/w10/IdeaProjects/batch80_Java/Cucumber_Calisma/src/test/resources/features/US014.feature:13)
 ]]>
-        </system-out>
+        </failure>
     </testcase>
 </testsuite>

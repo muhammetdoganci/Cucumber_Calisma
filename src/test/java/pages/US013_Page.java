@@ -38,6 +38,10 @@ public class US013_Page {
     @FindBy(xpath = "//*[@class='d-none d-md-inline']")
     public WebElement viewResults;
 
+    @FindBy(xpath = "//*[@class='btn btn-warning btn-sm']")
+    public WebElement requestInpatient;
+
+
 
 
 }
