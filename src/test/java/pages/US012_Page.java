@@ -40,6 +40,18 @@ public class US012_Page {
     @FindBy(xpath = "//tbody/tr")
     public WebElement testItems;
 
+    @FindBy(xpath = "//*[@class='svg-inline--fa fa-bed fa-w-20 fa-fw ']")
+    public WebElement myInpatients;
+
+    @FindBy(xpath = "//*[@class='btn btn-danger btn-sm']")
+    public WebElement testResults;
+
+    @FindBy(xpath = "//*[@class='d-none d-md-inline']")
+    public WebElement viewResults;
+
+    @FindBy(xpath = "//*[@class='btn btn-info btn-sm']")
+    public WebElement requestInpatient;
+
 
 
 

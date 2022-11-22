@@ -3,15 +3,14 @@ package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pages.US012_Page;
 import utilities.ConfigReader;
 import utilities.Driver;
+
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -47,7 +46,6 @@ public class US012_StepDefinition {
         us012_page.myPages.click();
         us012_page.myAppoitments.click();
     }
-
     @And("kullanici hasta duzenleye tiklar")
     public void kullaniciHastaDuzenleyeTiklar() {
         us012_page.edit.click();
@@ -65,21 +63,7 @@ public class US012_StepDefinition {
         }catch (InterruptedException e){
             throw new RuntimeException(e);
         }
-
-
     }
-
-
-        /*
-
-        List<WebElement> testler = Driver.getDriver().findElements(By.xpath("//tbody/tr/td[2]"));
-        for (int i = 0; i < testler.size(); i++) {
-            System.out.println(testler.get(i).getText());
-        }
-         */
-
-
-
     @And("kullanici sayfayi kapatir")
     public void kullaniciSayfayiKapatir() {
         Driver.closeDriver();
@@ -88,6 +72,61 @@ public class US012_StepDefinition {
     @And("kullanici testleri goruntuler")
     public void kullaniciTestleriGoruntuler() {
         us012_page.testItems.isDisplayed();
+
+    }
+
+
+    @Then("kullanici randevulu hastalari goruntuler")
+    public void kullaniciRandevuluHastalariGoruntuler() {
+        us012_page.myPages.click();
+        us012_page.myAppoitments.click();
+    }
+    @And("kullanici test sonuclarini goruntuler")
+    public void kullaniciTestSonuclariniGoruntuler() {
+        us012_page.testResults.click();
+    }
+    @And("kullanici test sonucunu gorur")
+    public void kullaniciTestSonucunuGorur() {
+        us012_page.viewResults.click();
+        List<WebElement> testBasliklari = Driver.getDriver().findElements(By.xpath("//tr/th"));
+        for (int i = 0; i < testBasliklari.size(); i++) {
+
+            System.out.println(testBasliklari.get(i).getText());
+            testBasliklari.get(i).isDisplayed();
+
+        }
+/*
+        List<WebElement> testTable = Driver.getDriver().findElements(By.xpath("//tbody//tr"));
+        for (WebElement table: testTable) {
+            System.out.println(table.getText());
+            table.isDisplayed();
+        }
+         */
+    }
+    @And("kullanici hastaya yatis talep eder")
+    public void kullaniciHastayaYatisTalepEder() {
+        us012_page.requestInpatient.click();
+
+    }
+    @Then("kullanici yatan hasalari tiklar")
+    public void kullaniciYatanHasalariTiklar() {
+        us012_page.myPages.click();
+        us012_page.myInpatients.click();
+    }
+
+    @And("kullanici yatan hasta duzenleye tiklar")
+    public void kullaniciYatanHastaDuzenleyeTiklar() {
+        us012_page.edit.click();
+    }
+
+    @And("kullanici hasta olustur ve duzenle bilgilerini goruntuler")
+    public void kullaniciHastaOlusturVeDuzenleBilgileriniGoruntuler() {
+        List<WebElement> createPatient = Driver.getDriver().findElements(By.xpath("//div/label"));
+        for (int i = 0; i < createPatient.size(); i++) {
+            System.out.println(createPatient.get(i).getText());
+            createPatient.get(i).isDisplayed();
+
+        }
 
     }
 }
