@@ -4,14 +4,18 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pages.US012_Page;
 import utilities.ConfigReader;
 import utilities.Driver;
 
+import java.io.File;
 import java.util.List;
 
+import static org.apache.commons.io.FileUtils.waitFor;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -129,4 +133,25 @@ public class US012_StepDefinition {
         }
 
     }
+
+    @And("kullanici statusu UNAPPROVED secer")
+    public void kullaniciStatusuUNAPPROVEDSecer() throws InterruptedException {
+        JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
+        jse.executeScript("arguments[0].scrollIntoView(true);", us012_page.status);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        Thread.sleep(2000);
+        us012_page.status.click();
+        Thread.sleep(2000);
+        us012_page.unapproved.click();
+        Thread.sleep(2000);
+        us012_page.save.click();
+
+
+
+
+    }
+
+
+
+
 }

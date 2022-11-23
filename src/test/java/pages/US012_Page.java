@@ -31,7 +31,7 @@ public class US012_Page {
     @FindBy(xpath = "//*[@class='svg-inline--fa fa-calendar-week fa-w-14 fa-fw ']")
     public WebElement myAppoitments;
 
-    @FindBy(xpath = "//a[@class='btn btn-primary btn-sm']")
+    @FindBy(xpath = "(//*[@class='btn btn-primary btn-sm'])[2]")
     public WebElement edit;
 
     @FindBy(xpath = "//*[@class='btn btn-success btn-sm']")
@@ -46,12 +46,20 @@ public class US012_Page {
     @FindBy(xpath = "//*[@class='btn btn-danger btn-sm']")
     public WebElement testResults;
 
-    @FindBy(xpath = "//*[@class='d-none d-md-inline']")
+    @FindBy(xpath = "(//*[@class='svg-inline--fa fa-eye fa-w-18 '])[2]")
     public WebElement viewResults;
 
-    @FindBy(xpath = "//*[@class='btn btn-info btn-sm']")
+    @FindBy(xpath = "//*[@class='btn btn-warning btn-sm']")
     public WebElement requestInpatient;
 
+    @FindBy(xpath = "//*[@id='in-patient-status']")
+    public WebElement status;
+
+    @FindBy(xpath = "//*[text()='UNAPPROVED']")
+    public WebElement unapproved;
+
+    @FindBy(xpath = "//*[@id='save-entity']")
+    public WebElement save;
 
 
 
