@@ -3,25 +3,19 @@ package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import pages.US012_Page;
 import utilities.ConfigReader;
 import utilities.Driver;
-
-import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
-
-import static org.apache.commons.io.FileUtils.waitFor;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class US012_StepDefinition {
     US012_Page us012_page = new US012_Page();
     Actions actions = new Actions(Driver.getDriver());
+    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+
     @Given("kullanici {string} sayfasina gider")
     public void kullaniciSayfasinaGider(String url) {
         Driver.getDriver().get(ConfigReader.getProperty("medunnaUrl"));
@@ -118,40 +112,151 @@ public class US012_StepDefinition {
         us012_page.myInpatients.click();
     }
 
-    @And("kullanici yatan hasta duzenleye tiklar")
-    public void kullaniciYatanHastaDuzenleyeTiklar() {
-        us012_page.edit.click();
-    }
-
-    @And("kullanici hasta olustur ve duzenle bilgilerini goruntuler")
-    public void kullaniciHastaOlusturVeDuzenleBilgileriniGoruntuler() {
-        List<WebElement> createPatient = Driver.getDriver().findElements(By.xpath("//div/label"));
-        for (int i = 0; i < createPatient.size(); i++) {
-            System.out.println(createPatient.get(i).getText());
-            createPatient.get(i).isDisplayed();
-
-        }
-
-    }
 
     @And("kullanici statusu UNAPPROVED secer")
     public void kullaniciStatusuUNAPPROVEDSecer() throws InterruptedException {
-        JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
-        jse.executeScript("arguments[0].scrollIntoView(true);", us012_page.status);
+        js.executeScript("arguments[0].scrollIntoView(true);", us012_page.status);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         Thread.sleep(2000);
         us012_page.status.click();
         Thread.sleep(2000);
         us012_page.unapproved.click();
         Thread.sleep(2000);
-        us012_page.save.click();
+        //us012_page.save.click();
+
+    }
+
+    @And("kullanici hasta bilgilerini doldurur")
+    public void kullaniciHastaBilgileriniDoldurur() {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].click();", us012_page.anamnesis);
 
 
+    }
+
+    @And("kullanici kaydet butonuna tiklar")
+    public void kullaniciKaydetButonunaTiklar() {
+        js.executeScript("arguments[0].scrollIntoView;", us012_page.saveButton);
+        us012_page.saveButton.click();
+    }
+
+    @And("kullanici {string} testlerini secer")
+    public void kullaniciTestleriniSecer(String tests) {
+
+        List<String> names = new ArrayList<>();
+        String[] testList = tests.replace("{", "").replace("}", "").split(",");
+        for (WebElement w : us012_page.nameList) {
+            names.add(w.getText());
+
+        }
+        int sayac = 0;
+        for (int i = 0; i < names.size(); i++) {
+            for (String s: testList) {
+                if (s.equals(names.get(i))){
+                    js.executeScript("arguments[0].scrollIntoView(true);",Driver.getDriver().
+                            findElement(By.xpath("(//*[@type='checkbox'])" + "[" + (i+1) + "]")));
+                    js.executeScript("arguments[0].click();", Driver.getDriver().
+                            findElement(By.xpath("(//*[@type='checkbox'])" + "[" + (i+1) + "]")));
+                    sayac++;
+
+                }
+
+            }
+
+        }
+      }
+
+    @Then("kullanici yatan hasta bilgilerini dogrular")
+    public void kullanici_yatan_hasta_bilgilerini_dogrular() {
+
+        List<WebElement> basliklar = Driver.getDriver().findElements(By.xpath("//th/span"));
+        for (WebElement w:basliklar) {
+            System.out.println(w.getText());
+            
+        }
+
+
+        }
+
+    @And("kullanici yatan hasta duzenleye tiklar")
+    public void kullaniciYatanHastaDuzenleyeTiklar() {
+        us012_page.editButton.click();
+
+    }
+
+    @And("kullanici statusu STAYING secer")
+    public void kullaniciStatusuSTAYINGSecer() throws InterruptedException {
+        js.executeScript("arguments[0].scrollIntoView(true);", us012_page.status);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        Thread.sleep(2000);
+        us012_page.status.click();
+        Thread.sleep(2000);
+        us012_page.staying.click();
+        Thread.sleep(2000);
+
+
+    }
+
+    @And("kullanici kaydede tiklar")
+    public void kullaniciKaydedeTiklar() {
+        js.executeScript("arguments[0].scrollIntoView(true);", us012_page.save);
+        js.executeScript("arguments[0].click();", us012_page.save);
+
+
+    }
+
+    @And("kullanici statusu DISCHARGED secer")
+    public void kullaniciStatusuDISCHARGEDSecer() throws InterruptedException {
+        js.executeScript("arguments[0].scrollIntoView(true);", us012_page.status);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        Thread.sleep(2000);
+        us012_page.status.click();
+        Thread.sleep(2000);
+        us012_page.discharged.click();
+        Thread.sleep(2000);
+    }
+
+    @And("kullanici statusu CANCELLED secer")
+    public void kullaniciStatusuCANCELLEDSecer() throws InterruptedException {
+        js.executeScript("arguments[0].scrollIntoView(true);", us012_page.status);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        Thread.sleep(2000);
+        us012_page.status.click();
+        Thread.sleep(2000);
+        us012_page.cancelled.click();
+        Thread.sleep(2000);
+    }
+
+    @And("kullanici oda secer")
+    public void kullaniciOdaSecer() throws InterruptedException {
+        ////select/option[contains(text(),'675210')]
+        js.executeScript("arguments[0].scrollIntoView(true);", us012_page.room);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        Thread.sleep(2000);
+        us012_page.room.click();
+        Thread.sleep(2000);
+        us012_page.room3661578.click();
+        Thread.sleep(2000);
+
+
+    }
+
+    @And("kullanici yeni yatan hasta duzenleye tiklar")
+    public void kullaniciYeniYatanHastaDuzenleyeTiklar() {
+        us012_page.editButtonUnapproved.click();
+
+    }
+
+    @And("kullanici odanin onaylandigini dogrular")
+    public void kullaniciOdaninOnaylandiginiDogrular() {
+        //actions.moveToElement(us012_page.roomUpdate).clickAndHold().;
+        actions.moveToElement(us012_page.roomUpdate).click().perform();
 
 
     }
 
 
-
-
 }
+
+
+

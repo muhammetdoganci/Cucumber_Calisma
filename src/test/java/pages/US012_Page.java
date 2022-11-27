@@ -1,9 +1,13 @@
 package pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
+
+import java.util.List;
 
 public class US012_Page {
     public US012_Page(){
@@ -58,8 +62,54 @@ public class US012_Page {
     @FindBy(xpath = "//*[text()='UNAPPROVED']")
     public WebElement unapproved;
 
+    @FindBy(xpath = "//*[text()='STAYING']")
+    public WebElement staying;
+
+    @FindBy(xpath = "//*[text()='DISCHARGED']")
+    public WebElement discharged;
+
+    @FindBy(xpath = "//*[text()='CANCELLED']")
+    public WebElement cancelled;
+
     @FindBy(xpath = "//*[@id='save-entity']")
     public WebElement save;
+
+    @FindBy(xpath = "//*[@class='is-touched is-pristine av-valid form-control']")
+    public WebElement anamnesis;
+
+    @FindBy(xpath = "//*[@class='btn btn-primary']")
+    public WebElement saveButton;
+
+   @FindBy(xpath = "//*//tbody//tr//td[2]")
+    public List<WebElement> nameList;
+
+    @FindBy(xpath = "//tr/th")
+    public List<WebElement> InPatients;
+
+    @FindBy(xpath = "(//span[contains(@class, 'd-none')])[1]")
+    public WebElement editButton;
+
+    @FindBy(xpath = "(//span[contains(@class, 'd-none')])[3]")
+    public WebElement editButtonUnapproved;
+
+    @FindBy(xpath = "//select[contains(@id,'in-patient-room')]")
+    public WebElement room;
+
+    @FindBy(xpath = "//select/option[contains(text(),'3661578')]")
+    public WebElement room3661578;
+    ////select/option[contains(text(),'3661578')]
+    ////select/option[contains(text(),'675210')]
+
+    @FindBy(xpath = "//*[text()='Toastify__toast-container Toastify__toast-container--top-left toastify-container']")
+    public WebElement roomUpdate;
+
+
+
+    ////*[@class='Toastify__toast-container Toastify__toast-container--top-left toastify-container']
+    //The In Patient is updated with identifier
+
+    //The In Patient is updated with identifier 334583
+
 
 
 
