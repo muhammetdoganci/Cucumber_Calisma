@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources/features",
         glue = "stepDefinitions",
-        tags = "@us12tc006",//2 tagi ayni anada calistirmak isterseniz "@gp1 or @gp2" seklinde yazariz
+        tags = "@register",//2 tagi ayni anada calistirmak isterseniz "@gp1 or @gp2" seklinde yazariz
         dryRun = false
 )
 
