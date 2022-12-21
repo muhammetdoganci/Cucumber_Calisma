@@ -22,10 +22,14 @@ public class MedunnaRegister_StepDefinition {
 
     @And("clicks the register button")
     public void clicksTheRegisterButton() {
-        registerPage.accountMenu.click();
-        registerPage.register.click();
-       //jse.executeScript("arguments[0].click;", registerPage.accountMenu);
-       //jse.executeScript("arguments[1].click;", registerPage.register);
+        //registerPage.accountMenu.click();
+        //registerPage.register.click();
+        try {
+            registerPage.accountMenu.click();
+        }catch (Exception e) {
+            jse.executeScript("arguments[0].click();", registerPage.accountMenu);
+            jse.executeScript("arguments[0]).click();", registerPage.register);
+        }
 
 
     }
@@ -47,5 +51,15 @@ public class MedunnaRegister_StepDefinition {
     @And("user close the page")
     public void userCloseThePage() {
         Driver.closeDriver();
+    }
+
+    @And("user waits {int} seconds")
+    public void userWaitsSeconds(int istenilenSure) {
+        try{
+            Thread.sleep(istenilenSure*1000);
+        }catch(InterruptedException e){
+            throw new RuntimeException(e);
+        }
+
     }
 }
