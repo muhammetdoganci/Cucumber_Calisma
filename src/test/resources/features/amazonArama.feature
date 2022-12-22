@@ -12,10 +12,10 @@ Feature: Amazonda arama yapma
 
     Examples:
     |arananUrun|
-    |nutella|
+    |school|
     |pencil|
     |biskrem|
-    |school|
+    |nutella|
 
 
 
