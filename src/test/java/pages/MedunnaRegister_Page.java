@@ -15,7 +15,7 @@ public class MedunnaRegister_Page {
     @FindBy(xpath = "//*[@id='account-menu']")
     public WebElement accountMenu;
 
-    @FindBy(xpath = "//*[contains(text(),'Register')]")
+    @FindBy(xpath = "(//a[@role='menuitem'])[2]")
     public WebElement register;
 
     @FindBy(xpath = "//input[@name='ssn']")
@@ -24,6 +24,22 @@ public class MedunnaRegister_Page {
     @FindBy(xpath = "//*[@class=\"form-group\"]")
     public WebElement ssnBlue;
 
+    @FindBy(xpath = "//input[@id='firstName']")
+    public WebElement firstName;
 
+    @FindBy(xpath = "//input[@id='firstPassword']")
+    public WebElement password;
+
+    @FindBy(xpath = "//ul[@id='strengthBar']/li[5]")
+    public WebElement passwordColor;
+
+    @FindBy(xpath = "//button[@id='register-submit']")
+    public WebElement registerSubmit;
+
+    @FindBy(xpath = "//*[contains(text(),'Registration Saved')]")
+    public WebElement alert;
+
+    @FindBy(xpath = "//*[@class='Toastify__toast-body']")
+    public WebElement alertClass;
 
 }
