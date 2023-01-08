@@ -31,8 +31,6 @@ public class MedunnaRegister_StepDefinition {
         //jse.executeScript("arguments[0].click();", registerPage.accountMenu);
         //jse.executeScript("arguments[1]).click();", registerPage.register);
 
-
-
     }
 
     @And("user enters {int} digit SSN with {string} after {int}rd and {int}th digits in SSN")
@@ -42,13 +40,14 @@ public class MedunnaRegister_StepDefinition {
         String ssnSon = Faker.instance().number().digits(4);
 
         registerPage.ssn.sendKeys(ssnIlkUc, "-", ssnOrta, "-", ssnSon, Keys.ENTER, Keys.TAB);
+
+        faker.idNumber().ssnValid();
     }
 
     @Then("user sees SSN box is blue")
     public void userSeesSSNBoxIsBlue() {
         Assert.assertTrue(registerPage.ssnBlue.isDisplayed());
     }
-
 
     @And("user waits {int} seconds")
     public void userWaitsSeconds(int istenilenSure) {
